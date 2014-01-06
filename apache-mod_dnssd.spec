@@ -34,7 +34,7 @@ poprzez DNS-SD przy użyciu Avahi.
 
 %build
 %configure \
-	--with-apxs=%{apxs}
+	APXS="%{apxs}"
 
 %{__make}
 
