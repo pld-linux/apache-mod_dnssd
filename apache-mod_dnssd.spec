@@ -1,9 +1,15 @@
+# TODO
+# - module not usable under apache 2.4:
+#   httpd: Syntax error on line 70 of /etc/httpd/apache.conf:
+#   Syntax error on line 1 of /etc/httpd/conf.d/90_mod_dnssd.conf:
+#   Cannot load modules/mod_dnssd.so into server: /etc/httpd/modules/mod_dnssd.so: undefined symbol: unixd_setup_child
+
 %define 	apxs		%{_sbindir}/apxs
 Summary:	mod_dnssd - Apache HTTPD module which adds Zeroconf support via DNS-SD using Avahi
 Summary(pl.UTF-8):	mod_dnssd - moduł Apache HTTPD oddający obsługę Zeroconfa poprzez DNS-SD przy użyciu Avahi
 Name:		apache-mod_dnssd
 Version:	0.6
-Release:	2
+Release:	2.1
 License:	Apache v2.0
 Group:		Networking/Daemons/HTTP
 Source0:	http://0pointer.de/lennart/projects/mod_dnssd/mod_dnssd-%{version}.tar.gz
@@ -41,7 +47,6 @@ poprzez DNS-SD przy użyciu Avahi.
 %install
 rm -rf $RPM_BUILD_ROOT
 install -d $RPM_BUILD_ROOT{%{_pkglibdir},%{_sysconfdir}}
-
 install -p src/.libs/mod_dnssd.so $RPM_BUILD_ROOT%{_pkglibdir}
 
 cat > $RPM_BUILD_ROOT%{_sysconfdir}/90_mod_dnssd.conf <<EOF
