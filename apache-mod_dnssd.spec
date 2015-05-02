@@ -3,7 +3,7 @@ Summary:	mod_dnssd - Apache HTTPD module which adds Zeroconf support via DNS-SD 
 Summary(pl.UTF-8):	mod_dnssd - moduł Apache HTTPD oddający obsługę Zeroconfa poprzez DNS-SD przy użyciu Avahi
 Name:		apache-mod_dnssd
 Version:	0.6
-Release:	1
+Release:	2
 License:	Apache v2.0
 Group:		Networking/Daemons/HTTP
 Source0:	http://0pointer.de/lennart/projects/mod_dnssd/mod_dnssd-%{version}.tar.gz
