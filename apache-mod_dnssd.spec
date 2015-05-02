@@ -14,6 +14,7 @@ License:	Apache v2.0
 Group:		Networking/Daemons/HTTP
 Source0:	http://0pointer.de/lennart/projects/mod_dnssd/mod_dnssd-%{version}.tar.gz
 # Source0-md5:	bed3d95a98168bf0515922d1c05020c5
+Source1:	mod_dnssd.conf
 URL:		http://0pointer.de/lennart/projects/mod_dnssd/
 BuildRequires:	%{apxs}
 BuildRequires:	apache-devel >= 2.2
@@ -48,15 +49,7 @@ poprzez DNS-SD przy użyciu Avahi.
 rm -rf $RPM_BUILD_ROOT
 install -d $RPM_BUILD_ROOT{%{_pkglibdir},%{_sysconfdir}}
 install -p src/.libs/mod_dnssd.so $RPM_BUILD_ROOT%{_pkglibdir}
-
-cat > $RPM_BUILD_ROOT%{_sysconfdir}/90_mod_dnssd.conf <<EOF
-LoadModule dnssd_module	modules/mod_dnssd.so
-DNSSDEnable On
-# enable to automatically register all mod_userdir directories
-DNSSDAutoRegisterUserDir Off
-# enable to automatically register all local virtual hosts
-DNSSDAutoRegisterVHosts Off
-EOF
+cp -p %{SOURCE1} $RPM_BUILD_ROOT%{_sysconfdir}/90_mod_dnssd.conf
 
 %clean
 rm -rf $RPM_BUILD_ROOT
@@ -72,5 +65,5 @@ fi
 %files
 %defattr(644,root,root,755)
 %doc README
-%attr(640,root,root) %config(noreplace) %verify(not md5 mtime size) %{_sysconfdir}/90_mod_dnssd.conf
+%attr(640,root,root) %config(noreplace) %verify(not md5 mtime size) %{_sysconfdir}/*_mod_dnssd.conf
 %attr(755,root,root) %{_pkglibdir}/mod_dnssd.so
