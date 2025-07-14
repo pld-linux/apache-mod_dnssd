@@ -33,7 +33,7 @@ poprzez DNS-SD przy użyciu Avahi.
 
 %prep
 %setup -q -n mod_dnssd-%{version}
-%patch0 -p1
+%patch -P0 -p1
 
 %build
 %configure \
